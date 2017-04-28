@@ -4,37 +4,54 @@ using UnityEngine;
 using TouchScript.Gestures;
 using System;
 
-public class CamMovScript : MonoBehaviour {
+public class CamMovScript : MonoBehaviour
+{
 
-	// Use this for initialization
-	void Start ()
+    public ScreenTransformGesture TwoFingerMoveGesture;
+    public ScreenTransformGesture ManipulationGesture;
+    public float PanSpeed = 200f;
+    public float RotationSpeed = 200f;
+    public float ZoomSpeed = 10f;
+
+    private Transform cam;
+
+
+    void Start()
     {
-        Application.runInBackground = true;	
-	}
-	
-	// Update is called once per frame
-	void Update ()
+        Application.runInBackground = true;
+    }
+
+    private void Awake()
+    {
+        cam = Camera.main.transform;
+    }
+
+
+    void Update()
     {
 
-		
-	}
+
+    }
 
 
     private void OnEnable()
     {
-        GetComponent<PressGesture>().Pressed += onPressed; 
+      
+    }
+
+    private void manipulationTransformedHandler(object sender, EventArgs e)
+    {
+      
+        
     }
 
     private void OnDisable()
     {
-        GetComponent<PressGesture>().Pressed -= onPressed;
+       
+
     }
 
 
 
-    void onPressed(object s, EventArgs a)
-    {
-        Debug.Log("PRESSED");
-    }
 
 }
